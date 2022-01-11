@@ -10,7 +10,7 @@
 > Forum is an online discussion site where people can hold conversations by posting, commenting, and liking messages.
 
 ## Developing process
-> :memo: GitLab - [Board](https://gitlab.com/veselin-ahmed1/forum)
+> :memo: GitLab - [Repository](https://gitlab.com/veselin-ahmed1/forum)
 
 > :memo: Issue Board - [Board](https://gitlab.com/veselin-ahmed1/forum/-/boards/3501326)
 
