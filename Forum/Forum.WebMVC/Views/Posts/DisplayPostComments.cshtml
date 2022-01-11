@@ -1,0 +1,12 @@
+﻿@model DisplayPostCommentsViewModel
+
+<partial model="@Model.Post" name="~/Views/Shared/Partials/_PostTemplatePartial.cshtml" />
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/js/PostLikeAjax.js"></script>
+}
+
+@(await Component.InvokeAsync<DisplayPostCommentsViewComponent>(Model))
+
+<partial model="@Model.Comment" name="~/Views/Shared/Partials/_CommentCreatePartial.cshtml" />

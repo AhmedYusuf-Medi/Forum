@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Forum.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:Forum.WebApi.Controllers.AccountsController.Register(Forum.Models.Request.User.UserRegisterRequestModel)">
+            <summary>
+            Registers user
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.AccountsController.Edit(System.Int64,Forum.Models.Request.User.UserEditRequestModel)">
+            <summary>
+            Edit user profile informations
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.AccountsController.LoginOperation(Forum.Models.Request.User.UserLoginRequestModel)">
+            <summary>
+            Logins user for 20 min time span and remmebers his role, userId and username
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.AccountsController.LogOutOperation">
+            <summary>
+            Logouts user
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.AccountsController.Verification(System.String,System.Guid)">
+            <summary>
+            Takes the verification url that we send to the user so he can verificates his self
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CategoriesController.GetById(System.Int64)">
+            <summary>
+            Returns Category by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CategoriesController.GetAll(Forum.Models.Pagination.PaginationRequestModel)">
+            <summary>
+            Returns all categories
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CategoriesController.Create(Forum.Models.Request.Category.CategoryRequestModel)">
+            <summary>
+            Creates category
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CategoriesController.Delete(System.Int64)">
+            <summary>
+            Deletes category by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CategoriesController.Edit(System.Int64,Forum.Models.Request.Category.CategoryRequestModel)">
+            <summary>
+            Edits category
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CategoriesController.OrderBy(Forum.Models.Request.Category.CategorySortRequestModel)">
+            <summary>
+            Returns categories sorted by given criteria/s
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentLikesController.Create(Forum.Models.Request.CommentLike.CommentLikeRequestModel)">
+            <summary>
+            Creates comment like
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentLikesController.Delete(System.Int64)">
+            <summary>
+            Deletes comment like
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentReportsController.GetAll(Forum.Models.Pagination.PaginationRequestModel)">
+            <summary>
+            Returns all exsting comment reports
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentReportsController.Create(Forum.Models.Request.CommentReport.CreateCommentReportRequestModel)">
+            <summary>
+            Creates comment report
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentReportsController.Delete(System.Int64,System.Int64)">
+            <summary>
+            Deletes comment report
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentsController.GetById(System.Int64)">
+            <summary>
+            Returns comment by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentsController.GetAll(Forum.Models.Pagination.PaginationRequestModel)">
+            <summary>
+            Returns all comments
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentsController.Create(Forum.Models.Request.Comment.CreateCommentRequestModel)">
+            <summary>
+            Creates comment
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentsController.Delete(System.Int64)">
+            <summary>
+            Deletes comment by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentsController.Edit(System.Int64,Forum.Models.Request.Comment.EditCommentRequestModel)">
+            <summary>
+            Edits comment
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentsController.Orderby(Forum.Models.Request.Comment.CommentSortRequestModel)">
+            <summary>
+            Returns comments sorted by given criteria/s
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.CommentsController.Filter(Forum.Models.Request.Comment.CommentFilterRequestModel)">
+            <summary>
+            Returns comments filtered by given criteria/s
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostLikesController.Create(Forum.Models.Request.PostLike.PostLikeRequestModel)">
+            <summary>
+            Creates post like
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostLikesController.Delete(System.Int64)">
+            <summary>
+            Deletes post like by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostReportsController.GetAll(Forum.Models.Pagination.PaginationRequestModel)">
+            <summary>
+            Returns all exsting post reports
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostReportsController.Create(Forum.Models.Request.PostReport.CreatePostReportRequestModel)">
+            <summary>
+            Creates post report
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostReportsController.Delete(System.Int64,System.Int64)">
+            <summary>
+            Deletes post report
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.GetById(System.Int64)">
+            <summary>
+            Returns post by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.GetCount">
+            <summary>
+            Returns count of all existing posts
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.GetLikesCount(System.Int64)">
+            <summary>
+            Returns count of likes by chosen post
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.GetCommentsCount(System.Int64)">
+            <summary>
+            Returns count of comments by chosen post
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.GetAll(Forum.Models.Pagination.PaginationRequestModel)">
+            <summary>
+            Returns all posts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.Create(Forum.Models.Request.Post.CreatePostRequestModel)">
+            <summary>
+            Creates post
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.Delete(System.Int64)">
+            <summary>
+            Deletes post by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.Edit(System.Int64,Forum.Models.Request.Post.EditPostRequestModel)">
+            <summary>
+            Edits post
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.Filter(Forum.Models.Request.Post.PostFilterRequestModel)">
+            <summary>
+            Returns posts filtered by given criteria/s
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.PostsController.OrderBy(Forum.Models.Request.Post.PostSortRequestModel)">
+            <summary>
+            Returns all posts sorted by given criteria/s
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.ReportsController.GetAll(Forum.Models.Pagination.PaginationRequestModel)">
+            <summary>
+            Returns all reports
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.ReportsController.GetById(System.Int64)">
+            <summary>
+            Returns report by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.ReportsController.Create(Forum.Models.Request.Report.CreateReportRequestModel)">
+            <summary>
+            Creates report
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.ReportsController.Delete(System.Int64)">
+            <summary>
+            Deletes report
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.ReportsController.Filter(Forum.Models.Request.Report.ReportFilterRequestModel)">
+            <summary>
+            Filters reports by given criterias
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.ReportsController.SortBy(Forum.Models.Request.Report.ReportSortRequestModel)">
+            <summary>
+            Returns all reports sorted by given criteria/s
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.UsersController.UserById(System.Int64)">
+            <summary>
+            Returns user by given Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.UsersController.Users(Forum.Models.Pagination.PaginationRequestModel)">
+            <summary>
+            Returns all users
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.UsersController.Delete(System.Int64)">
+            <summary>
+            Deletes user by Id
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.UsersController.Block(System.Int64)">
+            <summary>
+            Block user
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.UsersController.UnBlock(System.Int64)">
+            <summary>
+            Unblock user
+            </summary>
+        </member>
+        <member name="M:Forum.WebApi.Controllers.UsersController.SearchBy(Forum.Models.Request.User.UserSearchRequestModel)">
+            <summary>
+            Search by given parameters
+            </summary>
+        </member>
+    </members>
+</doc>

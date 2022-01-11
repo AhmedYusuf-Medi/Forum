@@ -1,0 +1,3572 @@
+{
+	"info": {
+		"_postman_id": "ea601baa-b320-445c-ae0d-5bdfaba6755a",
+		"name": "Forum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Use Cases",
+			"item": [
+				{
+					"name": "Post",
+					"item": [
+						{
+							"name": "01.Get By Id",
+							"item": [
+								{
+									"name": "01.Get post by Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "1.1Get non-existing post",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/99999999999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"99999999999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "02.Get all",
+							"item": [
+								{
+									"name": "02.Get all posts",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts?page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "03.Create",
+							"item": [
+								{
+									"name": "03.Create post",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 2,\r\n    \"categoryId\":2,\r\n    \"title\": \"VS 2022\",\r\n    \"description\": \"VS 2022 is awesome!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.1Post with non existing user",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 999999999,\r\n    \"categoryId\":2,\r\n    \"title\": \"VS 2022\",\r\n    \"description\": \"VS 2022 is awesome!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.2Post with non existing  category",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 2,\r\n    \"categoryId\":999999999,\r\n    \"title\": \"VS 2022\",\r\n    \"description\": \"VS 2022 is awesome!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.3Logout",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"stevenvselenski@gmail.com\",\r\n    \"password\": \"passwordQ1!\" \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/accounts/logout",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"accounts",
+												"logout"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.4Without authorization",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 2,\r\n    \"categoryId\":2,\r\n    \"title\": \"VS 2022\",\r\n    \"description\": \"VS 2022 is awesome!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "04.Delete",
+							"item": [
+								{
+									"name": "04.Delete post",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "04.Delete non-existing post",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"4"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "05.Edit",
+							"item": [
+								{
+									"name": "05.Update post",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"description\": \"Java is awesome!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "05.Update non-existing post",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"description\": \"Java is awesome!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts/9999999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"9999999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "06.Sort",
+							"item": [
+								{
+									"name": "06.Sort posts by created on",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?page=1&perPage=3&mostRecently=mr",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												},
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.1Sort posts by comments",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?mostCommented=mc&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostCommented",
+													"value": "mc"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.2Sort post by likes",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?mostLiked=ml&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostLiked",
+													"value": "ml"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.3Sort post by title asc",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?titleasc=ta&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "titleasc",
+													"value": "ta"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.4Sort post by title des",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?titledes=td&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "titledes",
+													"value": "td"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.5Most recently, commented and liked",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?mostRecently=mr&mostCommented=mc&mostLiked=ml&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												},
+												{
+													"key": "mostCommented",
+													"value": "mc"
+												},
+												{
+													"key": "mostLiked",
+													"value": "ml"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.6Most recently and liked",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?mostRecently=mr&mostLiked=ml&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												},
+												{
+													"key": "mostLiked",
+													"value": "ml"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.7Most commented and like",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?mostCommented=mc&mostLiked=ml&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostCommented",
+													"value": "mc"
+												},
+												{
+													"key": "mostLiked",
+													"value": "ml"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.8Most recently and commented",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?mostRecently=mr&mostComment=mc&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												},
+												{
+													"key": "mostComment",
+													"value": "mc"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.9Sort posts by comments and top 10",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/sortby?mostCommented=mc&top=5&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostCommented",
+													"value": "mc"
+												},
+												{
+													"key": "top",
+													"value": "5"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "07.Filter",
+							"item": [
+								{
+									"name": "08.Filter posts by username",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?username=stevenvselenski&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "username",
+													"value": "stevenvselenski"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "8.1Filter posts by username and sort by title in asc order",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?username=stevenvselenski&titleasc=ta&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "username",
+													"value": "stevenvselenski"
+												},
+												{
+													"key": "titleasc",
+													"value": "ta"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "09.Filter posts by category",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?category=sport&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "sport"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "9.1.Filter posts by category and order  by title in des order",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?category=sport&titledes=td&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "sport"
+												},
+												{
+													"key": "titledes",
+													"value": "td"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "10.Filter posts by user Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?userId=1&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "userId",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "10.1Filter posts by user Id and sort by most liked",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?userId=1&mostLiked=ml&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "userId",
+													"value": "1"
+												},
+												{
+													"key": "mostLiked",
+													"value": "ml"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "11.Filter posts by title",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?title=ronaldo&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "title",
+													"value": "ronaldo"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "11.1Filter posts by title and order by most commented",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?title=net&mostCommented=mc&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "title",
+													"value": "net"
+												},
+												{
+													"key": "mostCommented",
+													"value": "mc"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "12.Filter posts by description",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?description=.net&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "description",
+													"value": ".net"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "12.1Filter posts by description and sort by most recently",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?description=coding&mostRecently=mr&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "description",
+													"value": "coding"
+												},
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "13.Filter by multiple criteria",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?category=sport&userName=stevenvselenski&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "sport"
+												},
+												{
+													"key": "userName",
+													"value": "stevenvselenski"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "14.Filter by multiple criteria",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/filter?category=.net&description=2022&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": ".net"
+												},
+												{
+													"key": "description",
+													"value": "2022"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "08.Counts",
+							"item": [
+								{
+									"name": "12.Get posts count",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/count",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"count"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "13.Get post likes count",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/3/likes/count",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"3",
+												"likes",
+												"count"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "14.Get post comments count",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/posts/3/comments/count",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts",
+												"3",
+												"comments",
+												"count"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "01.Get by Id",
+							"item": [
+								{
+									"name": "01.Get category by Id",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/categories/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "1.1.Get non existing category",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/categories/999999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"999999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "02.Get all",
+							"item": [
+								{
+									"name": "02.Get all categories",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/categories?page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "03.Create",
+							"item": [
+								{
+									"name": "03.Create category",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"New Category\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/categories",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.1Create post with existing category",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 1,\r\n    \"categoryId\": 2,\r\n    \"title\": \"Title from future\",\r\n    \"description\": \"Future is a mistery!\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "04.Delete",
+							"item": [
+								{
+									"name": "4.Delete category",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/categories/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "4.1Delete non existing category",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/categories/99999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"99999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "05.Sorts",
+							"item": [
+								{
+									"name": "05.Sort by most uploaded",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/categories/sortBy?mostUploaded=mu&page=3&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"sortBy"
+											],
+											"query": [
+												{
+													"key": "mostUploaded",
+													"value": "mu"
+												},
+												{
+													"key": "page",
+													"value": "3"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "5.1Sort by most recently",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/categories/sortby?mostRecently=mr&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "5.2Sort by multiple criteria",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/categories/sortBy?mostUploaded=mu&mostRecently=mr&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"sortBy"
+											],
+											"query": [
+												{
+													"key": "mostUploaded",
+													"value": "mu"
+												},
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "06.Edit",
+							"item": [
+								{
+									"name": "06.Edit category",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"New category\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/categories/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6.1.Edit non-existing category",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"New category\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/categories/99999999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"categories",
+												"99999999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Comment",
+					"item": [
+						{
+							"name": "01.Get by Id",
+							"item": [
+								{
+									"name": "01.Get comment by Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "1.1Get non existing comment",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/99999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"99999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "02.Get all",
+							"item": [
+								{
+									"name": "02.Get all comments",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments?page=1&perPage=4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "4"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "03.Create",
+							"item": [
+								{
+									"name": "03.Create comment",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 3,\r\n    \"postId\": 2,\r\n    \"description\": \"Yeah, C# is better I guess!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/comments",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.1Create comment with non existing post",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 3,\r\n    \"postId\": 999999999999,\r\n    \"description\": \"Yeah, C# is better I guess!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/comments",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.1Create comment with non existing user",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": 9999999999,\r\n    \"postId\": 2,\r\n    \"description\": \"Yeah, C# is better I guess!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/comments",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "04.Update",
+							"item": [
+								{
+									"name": "3.Update comment",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"description\": \"New badass descriptionsss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/comments/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.1Update other user comment",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"description\": \"New badass descriptionsss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/comments/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3.2Update non existing comment",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"description\": \"New badass descriptionsss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/comments/99999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"99999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "05.Delete",
+							"item": [
+								{
+									"name": "05.Delete comment",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "5.1.Delete other user comment",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "06.Sort",
+							"item": [
+								{
+									"name": "07.Order comments by multiple critera",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/sortby?mostLiked=ml&mostRecently=mr&postId=1&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostLiked",
+													"value": "ml"
+												},
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												},
+												{
+													"key": "postId",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "7.1.Order comments by likes",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/sortby?mostLiked=ml&postId=1&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostLiked",
+													"value": "ml"
+												},
+												{
+													"key": "postId",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "7.2.Order comments by created on",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/sortby?mostRecently=mr&postId=1&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"sortby"
+											],
+											"query": [
+												{
+													"key": "mostRecently",
+													"value": "mr"
+												},
+												{
+													"key": "postId",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "07.Filter",
+							"item": [
+								{
+									"name": "08.FIlter comments by username",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/filter?userId=3&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "userId",
+													"value": "3"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "09.Filter comments by post Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/filter?postId=2&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "postId",
+													"value": "2"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "10.Filter by multiple criteria",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/comments/filter?userId=1&postId=1&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"comments",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "userId",
+													"value": "1"
+												},
+												{
+													"key": "postId",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Post like",
+					"item": [
+						{
+							"name": "01.Create post like",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 2,\r\n    \"PostId\" : 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/postlikes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"postlikes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "02.Delete post like",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 1,\r\n    \"PostId\" : 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/postlikes/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"postlikes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "03.Undelete existing post like",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 1,\r\n    \"PostId\" : 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/postlikes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"postlikes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "01.Register",
+							"item": [
+								{
+									"name": "01.Register user",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userName\": \"muthkabaronaNew\",\r\n    \"displayName\": \"AhmedNew\",\r\n    \"email\": \"muthkabaronaNew@gmail.com\",\r\n    \"password\": \"passwordQ1!\" \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/accounts/register",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"accounts",
+												"register"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "02.Login/logout",
+							"item": [
+								{
+									"name": "02.Login",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"muthkabarona@gmail.com\",\r\n    \"password\": \"passwordQ1!\" \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/accounts/login",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"accounts",
+												"login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.1Logout",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"stevenvselenski@gmail.com\",\r\n    \"password\": \"passwordQ1!\" \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/accounts/logout",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"accounts",
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "03.Edit",
+							"item": [
+								{
+									"name": "04.Edit user",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/accounts/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"accounts",
+												"4"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Admin",
+							"item": [
+								{
+									"name": "01.Get all users",
+									"item": [
+										{
+											"name": "01.Get all users",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users?page=1&perPage=3",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "perPage",
+															"value": "3"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "02.Delete users",
+									"item": [
+										{
+											"name": "05.Delete user",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"userName\": \"muthkabaronaEdit\",\r\n    \"displayName\": \"AhmedEdit\",\r\n    \"password\": \"passwordq1!\" \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:12076/api/users/3",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"3"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "03.Get by Id",
+									"item": [
+										{
+											"name": "03.Get user by id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/1",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "3.1Get non existing  user",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/99999999999",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"99999999999"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "04.Block / unblock",
+									"item": [
+										{
+											"name": "04.Block user",
+											"request": {
+												"method": "PATCH",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/block/1",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"block",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "4.1Unblock user",
+											"request": {
+												"method": "PATCH",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/unblock/1",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"unblock",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "4.2Block non existing user",
+											"request": {
+												"method": "PATCH",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/block/99999999999",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"block",
+														"99999999999"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "4.4Unblock non existing user",
+											"request": {
+												"method": "PATCH",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/unblock/999999",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"unblock",
+														"999999"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "05.Search by",
+									"item": [
+										{
+											"name": "05.Search by username",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/searchby?username=stevenvselenski",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"searchby"
+													],
+													"query": [
+														{
+															"key": "username",
+															"value": "stevenvselenski"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "5.1Search by username",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/searchby?email=stevenvselenski@gmail.com",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"searchby"
+													],
+													"query": [
+														{
+															"key": "email",
+															"value": "stevenvselenski@gmail.com"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "5.2Search by displayname",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:12076/api/users/searchby?displayname=steven",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "12076",
+													"path": [
+														"api",
+														"users",
+														"searchby"
+													],
+													"query": [
+														{
+															"key": "displayname",
+															"value": "steven"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Comment like",
+					"item": [
+						{
+							"name": "01.Create comment like",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 1,\r\n    \"commentId\" : 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/commentlikes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"commentlikes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "02.Delete comment like",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 1,\r\n    \"PostId\" : 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/commentlikes/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"commentlikes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "03.Undelete existing comment like",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 3,\r\n    \"commentId\" : 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/commentlikes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"commentlikes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Report",
+					"item": [
+						{
+							"name": "01.Get By Id",
+							"item": [
+								{
+									"name": "01.Get report by Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/reports/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "1.1Get non existing  report",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/reports/9999999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports",
+												"9999999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "02.Get all",
+							"item": [
+								{
+									"name": "02.Get all reports",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/reports?page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "03.Create",
+							"item": [
+								{
+									"name": "02.Create Report",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"senderId\": 2,\r\n    \"receiverId\": 3,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/reports",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.1Create Report with non existing  sender",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"senderId\": 999999999999999,\r\n    \"receiverId\": 3,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/reports",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.2Create Report with non existing  receiver",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"senderId\": 2,\r\n    \"receiverId\": 99999999999999,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/reports",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.3Create Report with non existing type",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"senderId\": 2,\r\n    \"receiverId\": 3,\r\n    \"reportTypeId\": 999999999999999999,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/reports",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.4Create Report with invalid description",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"senderId\": 2,\r\n    \"receiverId\": 99999999999999,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/reports",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.5Create Report with invalid description\\",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"senderId\": 2,\r\n    \"receiverId\": 99999999999999,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:12076/api/reports",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "04.Delete",
+							"item": [
+								{
+									"name": "04.Delete report",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/reports/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "04.Delete non existing  report",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/reports/99999999999",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports",
+												"99999999999"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "05.Filter",
+							"item": [
+								{
+									"name": "05.Filter by receiver name",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/reports/filter?receiver=stevenvselenski&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "receiver",
+													"value": "stevenvselenski"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "5.1Filter by sender name",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/reports/filter?sender=stevenvselenski&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "sender",
+													"value": "stevenvselenski"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "5.2Filter by userId",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:12076/api/reports/filter?userId=1&page=1&perPage=3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "12076",
+											"path": [
+												"api",
+												"reports",
+												"filter"
+											],
+											"query": [
+												{
+													"key": "userId",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "perPage",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Post Report",
+					"item": [
+						{
+							"name": "01.Create post report",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postId\": 10,\r\n    \"senderId\": 2,\r\n    \"receiverId\": 3,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/postreports",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"postreports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1.1Create existing post report",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postId\": 10,\r\n    \"senderId\": 2,\r\n    \"receiverId\": 3,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/postreports",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"postreports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "02.Get  all post reports",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/postreports?page=1&perPage=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"postreports"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perPage",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "03.Delete post report",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/postreports/1/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"postreports",
+										"1",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Comment Reprot",
+					"item": [
+						{
+							"name": "01.Create comment report",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"commentId\": 10,\r\n    \"senderId\": 2,\r\n    \"receiverId\": 3,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/commentreports",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"commentreports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1.1Create existing comment report\\",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"commentId\": 10,\r\n    \"senderId\": 2,\r\n    \"receiverId\": 3,\r\n    \"reportTypeId\": 2,\r\n    \"description\": \"I do not know who is this guy but Im gonna report him!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/commentreports",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"commentreports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "02.Get  all comment  reports",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/commentreports?page=1&perPage=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"commentreports"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perPage",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "03.Delete comment report",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:12076/api/commentreports/3/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "12076",
+									"path": [
+										"api",
+										"commentreports",
+										"3",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,63 @@
+﻿<form asp-controller="Posts" asp-action="Filter" method="get">
+    <div class="sidebarblock">
+
+        <h3>Filter &amp; Sort</h3>
+
+        <div class="divline"></div>
+
+        <div class="blocktxt">
+
+            <ul class="cats">
+
+                <li> <input class="form-control" type="text" name="Title" placeholder="Type Title" /> </li>
+                <br>
+                <li> <input class="form-control" type="text" name="Category" placeholder="Type Category" /> </li>
+                <br>
+                <li> <input class="form-control" type="text" name="Description" placeholder="Type Description" /> </li>
+                <br>
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="MostRecently" value="mr" id="flexCheckDefault">
+                        <span class="badge">Most Recently</span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="MostLiked" value="ml" id="flexCheckDefault">
+                        <span class="badge">Most Liked</span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="MostCommented" value="mc" id="flexCheckDefault">
+                        <span class="badge">Most Commented</span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="TitleAsc" value="ta" id="flexCheckDefault">
+                        <span class="badge">Title ASC</span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="TitleDes" value="td" id="flexCheckDefault">
+                        <span class="badge">Title DES</span>
+                    </div>
+                </li>
+                <br>
+                <li>
+                    <input class="btn btn-primary" type="submit" value="Apply" />
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</form>

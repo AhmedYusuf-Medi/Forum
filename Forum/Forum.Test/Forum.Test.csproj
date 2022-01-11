@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Services\Cloudinary\**" />
+	  <Compile Remove="Services\Comment\**" />
+	  <EmbeddedResource Remove="Services\Cloudinary\**" />
+	  <EmbeddedResource Remove="Services\Comment\**" />
+	  <None Remove="Services\Cloudinary\**" />
+	  <None Remove="Services\Comment\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.11" />
+		<PackageReference Include="Moq" Version="4.16.1" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+
+		<PackageReference Include="Moq" Version="4.16.1" />
+		<PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
+		<PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
+		<PackageReference Include="coverlet.collector" Version="3.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Forum.WebApi\Forum.WebApi.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Services\Accounts\" />
+		<Folder Include="Services\CommentLikes\" />
+		<Folder Include="Services\PostLikes\" />
+		<Folder Include="Services\Posts\" />
+		<Folder Include="Services\SelectList\" />
+	</ItemGroup>
+
+</Project>

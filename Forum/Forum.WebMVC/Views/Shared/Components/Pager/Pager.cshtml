@@ -1,0 +1,67 @@
+﻿@model Forum.Models.Pagination.Metadata;
+
+@{
+    var urlTemplate = Url.Action() + "?page={0}";
+    var request = ViewContext.HttpContext.Request;
+    foreach (var key in request.Query.Keys)
+    {
+        if (key == "page")
+        {
+            continue;
+        }
+
+        urlTemplate += "&" + key + "=" + request.Query[key];
+    }
+
+    var startIndex = Math.Max(Model.CurrentPage - 5, 1);
+    var finishIndex = Math.Min(Model.CurrentPage + 5, Model.TotalPages);
+}
+
+<div class="container" style="min-height:35px">
+
+    <div class="row">
+
+        <div class="col-lg-8 col-xs-12">
+
+            @if (Model.TotalPages > 1)
+            {
+                if (Model.CurrentPage != 1)
+                {
+                    <div class="pull-left"><a href="@urlTemplate.Replace("{0}", "1" )" class="prevnext"><i class="fa fa-angle-left"></i></a></div>
+                }
+
+                <div class="pull-left">
+
+                    <ul class="paginationforum">
+
+                        @for (var i = startIndex; i <= finishIndex; i++)
+                        {
+
+                            @if (i == Model.CurrentPage)
+                            {
+                                <li><a class="active">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@urlTemplate.Replace("{0}", i.ToString())">@i</a></li>
+                            }
+
+                        }
+
+                    </ul>
+
+                </div>
+
+                if (Model.CurrentPage != Model.TotalPages)
+                {
+                    <div class="pull-left"><a href="@urlTemplate.Replace("{0}", Model.TotalPages.ToString())" class="prevnext last"><i class="fa fa-angle-right"></i></a></div>
+                }
+            }
+
+            <div class="clearfix"></div>
+
+        </div>
+
+    </div>
+
+</div>

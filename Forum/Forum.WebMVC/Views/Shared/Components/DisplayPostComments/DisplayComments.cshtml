@@ -1,0 +1,8 @@
+﻿@model Forum.Service.Common.Extensions.Paginate<Forum.Models.Response.Comment.CommentResponseModel>
+
+@foreach (var comment in Model.Entities)
+{
+    <partial model="@comment" name="~/Views/Shared/Partials/_CommentTemplatePartial.cshtml" />
+}
+
+@(await Component.InvokeAsync<Forum.WebMVC.ViewComponents.Pagination.PagerViewComponent>(Model.Metadata))

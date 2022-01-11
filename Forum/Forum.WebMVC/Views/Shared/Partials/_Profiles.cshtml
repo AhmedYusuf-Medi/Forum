@@ -1,0 +1,93 @@
+﻿@model Forum.Models.Response.User.UserResponseModel
+
+
+<div class="post">
+
+    <div class="postinfotop">
+        <h2>User Profile</h2>
+    </div>
+
+    <!-- acc section -->
+    <div class="accsection">
+        <div class="topwrap">
+            <div class="userinfo pull-left">
+                <div class="avatar">
+                    <img id="img" src="@Model.PicturePath" alt="Avatar">
+                </div>
+            </div>
+            <div class="posttext pull-left">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <span>Email:</span>
+                        <p>@Model.Email</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <span>Username:</span>
+                        <p>@Model.UserName</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <span>Display name:</span>
+                        <p>@Model.DisplayName</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <span>Role:</span>
+                        @if (Model.Role == "User")
+                        {
+                            <p style="color:green">@Model.Role</p>
+                        }
+                        else if (Model.Role == "Pending")
+                        {
+                            <p style="color:orange">@Model.Role</p>
+                            <span>Check email to complete Registration!</span>
+                            <div><a asp-controller="Account" asp-action="ResendEmail" asp-route-email="@ViewBag.CurrentUser.Email" asp-route-code="@ViewBag.CurrentUser.Code">Send validation link</a></div>
+                        }
+                        else if (Model.Role == "Blocked")
+                        {
+                            <p style="color:red">@Model.Role</p>
+                        }
+                        else if (Model.Role == "Admin")
+                        {
+                            <p style="color:blue">@Model.Role</p>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <p><a asp-controller="Posts" asp-action="Filter" asp-route-username=@Model.UserName>All posts</a></p>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <p>@Model.PostsCount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div><!-- acc section END -->
+
+    <div class="postinfobot">
+        <div class="pull-right postreply">
+            @if (Model.Role == "Blocked")
+            {
+                <div class="pull-left">
+                    <form asp-controller="Admin" asp-action="Unblock" method="post">
+                        <input style="display: none" type="text" name="Id" value="@Model.Id" />
+                        <input type="submit" class="btn btn-success" name="name" value="Unblock" />
+                    </form>
+                </div>
+            }
+            else
+            {
+                <form asp-controller="Admin" asp-action="Block" method="post">
+                    <div class="pull-left">
+                        <input style="display: none" type="text" name="Id" value="@Model.Id" />
+                        <input type="submit" class="btn btn-danger" name="name" value="Block" />
+                    </div>
+                </form>
+            }
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

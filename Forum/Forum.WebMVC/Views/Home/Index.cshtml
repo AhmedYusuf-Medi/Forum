@@ -1,0 +1,13 @@
+@model Paginate<PostResponseModel>
+
+@foreach (var post in Model.Entities)
+{
+    <partial model="@post" name="~/Views/Shared/Partials/_PostTemplatePartial.cshtml" />
+}
+
+@(await Component.InvokeAsync<Forum.WebMVC.ViewComponents.Pagination.PagerViewComponent>(Model.Metadata))
+
+@section Scripts
+{
+    <script asp-append-version="true" src="~/js/PostLikeAjax.js"></script>
+}

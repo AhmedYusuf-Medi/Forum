@@ -1,0 +1,61 @@
+﻿@model CreatePostRequestModel
+
+@{
+    ViewData["Title"] = "Post Create";
+}
+
+<div class="post">
+
+    <form asp-controller="Posts" asp-action="Create" class="form newtopic" method="post">
+
+        <div class="topwrap">
+
+            <div class="userinfo pull-left">
+
+                <div class="avatar">
+                    <img src="@this.Context.Request.Cookies["Avatar"]" alt="" />
+                </div>
+
+            </div>
+
+            <input style="display: none" type="number" name="UserId" value=@long.Parse(this.Context.Request.Cookies["UserId"]) />
+
+            <div class="posttext pull-left">
+
+                <!-- Title form -->
+                <div>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                    <input asp-for="Title" type="text" placeholder="Enter Topic Title" class="form-control" required />
+                </div>
+
+                <div class="row">
+                    <!-- Category dropdown -->
+                    <div class="col-lg-6 col-md-6">
+                        <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.Categories" required>
+                            <option value="" disabled selected>Select Category</option>
+                        </select>
+                    </div>
+                    <!--Sub Category dropdown optional -->
+
+                </div>
+                <!-- Description form -->
+                <div>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <textarea asp-for="Description" placeholder="Description" class="form-control" required></textarea>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="postinfobot">
+
+            <div class="pull-right postreply">
+                <div class="pull-left"><button type="submit" class="btn btn-primary">Post</button></div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div><!-- POST -->

@@ -1,0 +1,80 @@
+﻿@model CommentResponseModel
+
+<div class="post">
+
+    <div class="wrap-ut pull-left">
+
+        <div class="userinfo pull-left">
+
+            <div class="avatar">
+
+                <img src=@Model.Avatar />
+                @if (this.Context.Request.Cookies.Any(c => c.Key == "UserId") && (long.Parse(this.Context.Request.Cookies["UserId"]).Equals(Model.UserId) || this.Context.Request.Cookies["Role"].Equals("Admin")))
+                {
+                    <div class="views dropdown">
+
+                        <a data-toggle="dropdown" href="#"><i class="fa fa-ellipsis-h"></i></a>
+
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li role="presentation"><a role="menuitem" tabindex="-1" asp-controller="Comments" asp-action="EditForm" asp-route-id="@Model.Id" asp-route-postId="@Model.PostId">Edit</a></li>
+
+                            <li role="presentation"><a role="menuitem" tabindex="-3" asp-controller="Comments" asp-action="Delete" asp-route-id="@Model.Id" asp-route-postId="@Model.PostId">Delete</a></li>
+
+                        </ul>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+        <div class="posttext pull-left">
+
+            <span><a asp-controller="Posts" asp-action="Filter" asp-route-username=@Model.Username>@Model.Username</a></span>
+
+            <p>@Model.Description</p>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div class="time"><i class="fa fa-clock-o"></i> Days: @(DateTime.UtcNow.Subtract(Model.CreatedOn).Days)</div>
+
+    <div class="clearfix"></div>
+
+    <div class="postinfobot">
+
+        <div class="likeblock pull-left">
+            <form asp-controller="CommentLikes" asp-action="Create" method="post" onsubmit="return LikeCommentAjax(this, @Model.Id)">
+
+                <input style="display: none" type="text" name="UserId" value="@Model.UserId" />
+                <input style="display: none" type="text" name="CommentId" value="@Model.Id" />
+
+                <div class="">
+                    <button id="like-button1" class="likes-count up" type="submit"><i class="fa fa-thumbs-o-up"></i></button>
+                    <span id="likesC-@Model.Id" type="text" name="name">@Model.Likes</span>
+                </div>
+
+            </form>
+
+        </div>
+
+            <div class="posted pull-right"><i class="fa fa-clock-o"></i>Created On: @Model.CreatedOn</div>
+
+            <div class="clearfix"></div>
+
+        </div>
+
+</div>
+
+<style>
+    #like-button1 {
+        outline: none;
+        background: none;
+        border: none;
+    }
+</style>

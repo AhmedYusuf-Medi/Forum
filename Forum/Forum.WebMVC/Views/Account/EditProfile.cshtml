@@ -1,0 +1,91 @@
+﻿@model Forum.Models.Request.User.UserEditRequestModel
+
+@{
+    ViewData["Title"] = "Profile edit";
+}
+
+<div class="post">
+    <form asp-controller="Account" asp-action="Edit" enctype="multipart/form-data" class="form newtopic" method="post">
+        <div class="postinfotop">
+            <h2>User Profile</h2>
+        </div>
+
+        <!-- acc section -->
+        <div class="accsection">
+            <div class="acccap">
+                <div class="userinfo pull-left">&nbsp;</div>
+                <div class="posttext pull-left"><h3>Required Fields</h3></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="topwrap">
+                <div class="userinfo pull-left">
+                    <div class="avatar">
+                        <img id="img" src="@ViewBag.CurrentUser.PicturePath" alt="Avatar" />
+                        <label class="form-label mt-4">Avatar</label>
+                    </div>
+                </div>
+                <div class="posttext pull-left">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <label asp-for="Email" class="form-label mt-4"> </label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <input asp-for="Email" type="text" placeholder="Email" class="form-control" value="@ViewBag.CurrentUser.Email" required>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <label asp-for="Username" class="form-label mt-4"></label>
+                            @*<span asp-validation-for="Username" class="text-danger"></span>
+                                <input asp-for="Username" type="text" placeholder="User Name" class="form-control" value="@ViewBag.CurrentUser.UserName" required>*@
+                            <p>@ViewBag.CurrentUser.UserName</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <label asp-for="Password" class="form-label mt-4"></label>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <input asp-for="Password" type="password" placeholder="Password" class="form-control" value="@ViewBag.CurrentUser.Password" required>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <label asp-for="DisplayName" class="form-label mt-4"></label>
+                            <span asp-validation-for="DisplayName" class="text-danger"></span>
+                            <input asp-for="DisplayName" type="text" placeholder="Display name" class="form-control" value="@ViewBag.CurrentUser.DisplayName" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <input asp-for="Avatar" type="file" accept="image/*" onchange="readURL(this)" class="form-control btn">
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+        </div><!-- acc section END -->
+
+        <div class="postinfobot">
+            <div class="pull-right postreply">
+                <div class="pull-left smile"><a href="#"><i class="fa fa-smile-o"></i></a></div>
+                <form asp-controller="Home" asp-action="Index" method="post">
+                    <div class="pull-left"><button type="submit" class="btn btn-primary" style="background-color: gray; margin-right: 4px">Cancel</button></div>
+                </form>
+                <div class="pull-left"><button type="submit" class="btn btn-primary">Save</button></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.querySelector("#img").setAttribute("src", e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

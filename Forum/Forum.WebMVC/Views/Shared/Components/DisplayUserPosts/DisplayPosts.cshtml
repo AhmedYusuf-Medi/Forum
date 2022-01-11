@@ -1,0 +1,18 @@
+﻿@model IEnumerable<PostResponseModel>
+
+<div class="sidebarblock">
+
+    <h3>My Active Posts</h3>
+
+    <div class="divline"></div>
+
+    @foreach (var post in Model)
+    {
+        <div class="blocktxt">
+
+            <a asp-controller="Posts" asp-action="DisplayPostComments" asp-route-postId="@post.Id">@post.Title <span class="badge pull-right fa fa-comment"> @post.CommentCount</span> <span class="badge pull-right fa fa-thumbs-o-up"> @post.LikesCount</span></a>
+
+        </div>
+    }
+
+</div>
