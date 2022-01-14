@@ -1,7 +1,7 @@
 # **Forum**
 
 # **:trophy: Award**
->:rocket: Best forum project for Telerik Academy C# A31 - [Mercell](https://www.negometrix.com)
+>:rocket: Best forum project for Telerik Academy C# A31 - given from [Mercell](https://www.negometrix.com)
 
 ## Project Description
 >#### Dungeon full of final bosses where you can communicate with post, comments and likes. But not a normal RPG dungeon, whenever you log into the forum you get +10 programming skills!
@@ -10,6 +10,8 @@
 > Forum is an online discussion site where people can hold conversations by posting, commenting, and liking messages.
 
 ## Developing process
+> :memo: GitLab - [Repository](https://gitlab.com/veselin-ahmed1/forum)
+
 > :memo: Issue Board - [Board](https://gitlab.com/veselin-ahmed1/forum/-/boards/3501326)
 
 > :memo: Issue List - [List](https://gitlab.com/veselin-ahmed1/forum/-/issues)
