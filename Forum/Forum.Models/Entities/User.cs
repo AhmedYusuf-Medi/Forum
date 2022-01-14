@@ -17,10 +17,10 @@ namespace Forum.Models.Entities
             this.ReceivedReports = new HashSet<Report>();
         }
        
-        [Required, StringLength(20, MinimumLength = 2, ErrorMessage = "First name must be between {2} and {1}.")]
+        [Required, StringLength(20, MinimumLength = 2, ErrorMessage = "Username must be between {2} and {1}.")]
         public string Username { get; set; }
 
-        [Required, StringLength(20, MinimumLength = 2, ErrorMessage = "First name must be between {2} and {1}.")]
+        [Required, StringLength(20, MinimumLength = 2, ErrorMessage = "Displayname must be between {2} and {1}.")]
         public string DisplayName { get; set; }
 
         [Required]
