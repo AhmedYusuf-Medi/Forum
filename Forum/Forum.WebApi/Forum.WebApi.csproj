@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;1591</NoWarn>
-    <DocumentationFile>D:\C#\Forum - Production\forum\Forum\Forum.WebApi\Forum.WebApi.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Medi\Documents\GitHub\Forum\Forum\Forum.WebApi</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
